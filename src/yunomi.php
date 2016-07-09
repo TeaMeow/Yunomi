@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * http://jaceju.net/2014-07-27-php-di-container/
+ */
+ 
 class Yunomi
 {
     static $map = [];
