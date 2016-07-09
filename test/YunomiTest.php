@@ -55,7 +55,7 @@ class YunomiTest extends \PHPUnit_Framework_TestCase
             return new C($a, $b);
         });
         
-        $this->assertEquals($C, new C(new A(), new B()));
+        $this->assertEquals($C, new C(new A('A'), new B()));
     }
 }
 ?>
