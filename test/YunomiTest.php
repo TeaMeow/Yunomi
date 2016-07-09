@@ -39,6 +39,13 @@ class YunomiTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($A, new A());
     }
     
+    function testNone()
+    {
+        $D = Yunomi::get('D');
+        
+        $this->assertEquals($D, null);
+    }
+    
     function testBasicWithArg()
     {
         Yunomi::register('A', 'A', ['A']);
