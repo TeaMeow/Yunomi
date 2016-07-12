@@ -60,6 +60,7 @@ class YunomiTest extends \PHPUnit_Framework_TestCase
         Yunomi::register('A', 'A', ['A']);
 
         $A = Yunomi::get('A');
+        var_dump($A);
 
         $this->assertEquals($A, new A('A'));
     }
