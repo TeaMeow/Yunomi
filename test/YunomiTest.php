@@ -57,19 +57,18 @@ class YunomiTest extends \PHPUnit_Framework_TestCase
 
     function testBasicWithArg()
     {
-        Yunomi::register('A', 'A', ['A']);
+        Yunomi::register('AA', 'A', ['A']);
 
-        $A = Yunomi::get('A');
-        var_dump($A);
+        $AA = Yunomi::get('AA');
 
-        $this->assertEquals($A, new A('A'));
+        $this->assertEquals($AA, new A('A'));
     }
 
     function testInject()
     {
-        $C = Yunomi::inject('A', 'B', function($a, $b)
+        $C = Yunomi::inject('AA', 'B', function($aa, $b)
         {
-            return new C($a, $b);
+            return new C($aa, $b);
         });
 
         $this->assertEquals($C, new C(new A('A'), new B()));
