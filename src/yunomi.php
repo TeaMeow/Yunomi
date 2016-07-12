@@ -44,7 +44,7 @@ class Yunomi
                                                      : self::$classes[$name]->newInstanceArgs($args);
             }
 
-            return self::$classes[$class];
+            return self::$classes[$name];
         }
     }
 
