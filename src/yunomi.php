@@ -6,7 +6,8 @@
 
 class Yunomi
 {
-    static $map = [];
+    static $map     = [];
+    static $classes = [];
 
     static function register($name, $class, $args = null)
     {
@@ -35,13 +36,17 @@ class Yunomi
 
         if(class_exists($class, true))
         {
-            $reflectionClass = new ReflectionClass($class);
+            if(!isset(self::$classes[$class]))
+            {
+                self::$classes[$class] = new ReflectionClass($class);
 
-            return !empty($args) ? $reflectionClass->newInstanceArgs($args)
-                                 : new $class();
+                self::$classes[$class] = empty($args) ? self::$classes[$class]->newInstance()
+                                                      : self::$classes[$class]->newInstanceArgs($args);
+            }
+
+            return self::$classes[$class];
         }
     }
-
 
     static function inject()
     {
@@ -72,8 +77,8 @@ class Yunomi
             $args[] = self::get($class);
         }
 
-        return !empty($args) ? $reflectionClass->newInstanceArgs($args)
-                             : new $class();
+        return empty($args) ? new $class()
+                            : $reflectionClass->newInstanceArgs($args);
     }
 }
 ?>
