@@ -36,12 +36,12 @@ class Yunomi
 
         if(class_exists($class, true))
         {
-            if(!isset(self::$classes[$class]))
+            if(!isset(self::$classes[$name]))
             {
-                self::$classes[$class] = new ReflectionClass($class);
+                self::$classes[$name] = new ReflectionClass($class);
 
-                self::$classes[$class] = empty($args) ? self::$classes[$class]->newInstance()
-                                                      : self::$classes[$class]->newInstanceArgs($args);
+                self::$classes[$name] = empty($args) ? self::$classes[$name]->newInstance()
+                                                     : self::$classes[$name]->newInstanceArgs($args);
             }
 
             return self::$classes[$class];
